@@ -342,139 +342,139 @@ class MainController {
             numberCert = reader.readLine()
             reader.close()
             if (student.status != "FAILED" && student.status != "PENDING") {
-                var doc: XWPFDocument? = null
+                var predoc: String? = null
                 var paragraphEnroll: Int? = null
                 var paragraphBudget: Int? = null
                 when (student.group) {
 
                     "11", "12", "13" -> {
-                        doc = XWPFDocument(FileInputStream("data/templates/11-13.docx"))
+                        predoc =("data/templates/11-13.docx")
                         paragraphEnroll = 24
                         paragraphBudget = 22
                     }
 
                     "14", "15", "150" -> {
-                        doc = XWPFDocument(FileInputStream("data/templates/14,15,150.docx"))
+                        predoc =("data/templates/14,15,150.docx")
                         paragraphEnroll = 25
                         paragraphBudget = 23
                     }
 
                     "16", "19", "160" -> {
-                        doc = XWPFDocument(FileInputStream("data/templates/16,19,160.docx"))
+                        predoc =("data/templates/16,19,160.docx")
                         paragraphEnroll = 25
                         paragraphBudget = 23
                     }
 
                     "17", "18", "10" -> {
-                        doc = XWPFDocument(FileInputStream("data/templates/17,18,10.docx"))
+                        predoc =("data/templates/17,18,10.docx")
                         paragraphEnroll = 25
                         paragraphBudget = 22
                     }
 
                     "21", "22", "23" -> {
-                        doc = XWPFDocument(FileInputStream("data/templates/21-23.docx"))
+                        predoc =("data/templates/21-23.docx")
                         paragraphEnroll = 24
                         paragraphBudget = 22
                     }
 
                     "24", "25" -> {
-                        doc = XWPFDocument(FileInputStream("data/templates/24,25.docx"))
+                        predoc =("data/templates/24,25.docx")
                         paragraphEnroll = 25
                         paragraphBudget = 23
                     }
 
                     "26", "29" -> {
-                        doc = XWPFDocument(FileInputStream("data/templates/26,29.docx"))
+                        predoc =("data/templates/26,29.docx")
                         paragraphEnroll = 25
                         paragraphBudget = 23
                     }
 
                     "27", "28", "210" -> {
-                        doc = XWPFDocument(FileInputStream("data/templates/27,28,210.docx"))
+                        predoc =("data/templates/27,28,210.docx")
                         paragraphEnroll = 24
                         paragraphBudget = 22
                     }
 
                     "3ИТ", "3ПМ", "3ММ" -> {
-                        doc = XWPFDocument(FileInputStream("data/templates/31it,3pm,3mm.docx"))
+                        predoc =("data/templates/31it,3pm,3mm.docx")
                         paragraphEnroll = 24
                         paragraphBudget = 22
                     }
 
                     "34", "35" -> {
-                        doc = XWPFDocument(FileInputStream("data/templates/34,35.docx"))
+                        predoc =("data/templates/34,35.docx")
                         paragraphEnroll = 25
                         paragraphBudget = 23
                     }
 
                     "36", "39" -> {
-                        doc = XWPFDocument(FileInputStream("data/templates/36,39.docx"))
+                        predoc =("data/templates/36,39.docx")
                         paragraphEnroll = 24
                         paragraphBudget = 22
                     }
 
                     "37", "38" -> {
-                        doc = XWPFDocument(FileInputStream("data/templates/37,38.docx"))
+                        predoc =("data/templates/37,38.docx")
                         paragraphEnroll = 24
                         paragraphBudget = 22
                     }
 
                     "41", "4ИТ", "4ПМ", "4ММ" -> {
-                        doc = XWPFDocument(FileInputStream("data/templates/41,41it,4pm,4mm.docx"))
+                        predoc =("data/templates/41,41it,4pm,4mm.docx")
                         paragraphEnroll = 24
                         paragraphBudget = 22
                     }
 
                     "44", "45" -> {
-                        doc = XWPFDocument(FileInputStream("data/templates/44,45.docx"))
+                        predoc =("data/templates/44,45.docx")
                         paragraphEnroll = 25
                         paragraphBudget = 23
                     }
 
                     "46", "49" -> {
-                        doc = XWPFDocument(FileInputStream("data/templates/46,49.docx"))
+                        predoc =("data/templates/46,49.docx")
                         paragraphEnroll = 25
                         paragraphBudget = 23
                     }
 
                     "47", "48" -> {
-                        doc = XWPFDocument(FileInputStream("data/templates/47,48.docx"))
+                        predoc =("data/templates/47,48.docx")
                         paragraphEnroll = 24
                         paragraphBudget = 22
                     }
 
                     "65" -> {
-                        doc = XWPFDocument(FileInputStream("data/templates/65.docx"))
+                        predoc =("data/templates/65.docx")
                         paragraphEnroll = 24
                         paragraphBudget = 22
                     }
 
                     "67" -> {
-                        doc = XWPFDocument(FileInputStream("data/templates/67.docx"))
+                        predoc =("data/templates/67.docx")
                         paragraphEnroll = 24
                         paragraphBudget = 22
                     }
 
                     "75" -> {
-                        doc = XWPFDocument(FileInputStream("data/templates/75.docx"))
+                        predoc =("data/templates/75.docx")
                         paragraphEnroll = 26
                         paragraphBudget = 24
                     }
 
                     "77" -> {
-                        doc = XWPFDocument(FileInputStream("data/templates/77.docx"))
+                        predoc =("data/templates/77.docx")
                         paragraphEnroll = 24
                         paragraphBudget = 22
                     }
 
                     "202", "209", "212" -> {
-                        doc = XWPFDocument(FileInputStream("data/templates/202,209,212.docx"))
+                        predoc =("data/templates/202,209,212.docx")
                         paragraphEnroll = 25
                         paragraphBudget = 23
                     }
 
                     "302", "309", "312" -> {
-                        doc = XWPFDocument(FileInputStream("data/templates/302,309,312.docx"))
+                        predoc =("data/templates/302,309,312.docx")
                         paragraphEnroll = 24
                         paragraphBudget = 22
                     }
@@ -486,6 +486,7 @@ class MainController {
                 }
                 for (i in 0 until student.count) {
 
+                    var doc: XWPFDocument=XWPFDocument(FileInputStream(predoc))
 
                     var paragraph1d: XWPFParagraph
                     paragraph1d = doc!!.paragraphs[paragraphBudget!!]
@@ -635,6 +636,7 @@ class MainController {
                     out.close()
 
                     val incrementedNumber: Int = numberCert!!.toInt() + 1
+                    numberCert=incrementedNumber.toString()
                     val writer = BufferedWriter(FileWriter("numberOfCertificate.txt"))
                     writer.write(incrementedNumber.toString())
                     writer.close()
@@ -669,6 +671,8 @@ class MainController {
                     counter++
                     student.status = "GENERATED"
                     progressBar.progress = (counter.toDouble() / StudentListInstance.studentList.students.size)
+
+
 
                 }
             }
