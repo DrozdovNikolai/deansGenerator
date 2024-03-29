@@ -27,10 +27,13 @@ import java.net.URI
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.regex.Pattern
 
 class MainController {
+    lateinit var casecheckbox: CheckBox
+    lateinit var generateBtn: Button
     lateinit var stage: Stage
     lateinit var certNumb: TextField
 
@@ -249,12 +252,14 @@ class MainController {
     }
 
     fun findMatches() {
-        StudentListInstance.studentList.findMatches()
+        StudentListInstance.studentList.findMatches(casecheckbox.isSelected())
         tableView.refresh()
         val ind=tableView.selectionModel.selectedIndex
         tableView.selectionModel.clearSelection()
         tableView.selectionModel.select(ind)
+        generateBtn.setDisable(false)
     }
+
 
     @FXML
     fun reload() {
@@ -308,7 +313,11 @@ class MainController {
         sheet.setColumnWidth(4, 15 * 256)
 
         val directoryPath = "excel/$day.$month.$year"
-        val filePath1 = "$directoryPath/mega_dannie.xlsx"
+        val formatter = DateTimeFormatter.ofPattern("HH-mm-ss")
+
+        val currentTime = LocalDateTime.now().format(formatter)
+
+        val filePath1 = "$directoryPath/mega_dannie_${currentTime}.xlsx"
         val directory = File(directoryPath)
 
 
@@ -417,7 +426,7 @@ class MainController {
                     }
 
                     "44", "45" -> {
-                        doc = XWPFDocument(FileInputStream("data/templates/37,38.docx"))
+                        doc = XWPFDocument(FileInputStream("data/templates/44,45.docx"))
                         paragraphEnroll = 25
                         paragraphBudget = 23
                     }

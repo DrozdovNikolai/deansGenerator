@@ -371,7 +371,7 @@ class StudentList {
 
         return studentMatched
     }
-    fun findStudentFioIsNominative(student: Student,nominativeNamesGroup: ObservableList<StudentDB>,nominativeNamesDB: ObservableList<StudentDB>): StudentDB? {
+    fun findStudentFioIsNominative(student: Student,nominativeNamesGroup: ObservableList<StudentDB>,nominativeNamesDB: ObservableList<StudentDB>,offlinemode:Boolean): StudentDB? {
 
 
         var studentMatched:StudentDB?=null
@@ -390,10 +390,11 @@ class StudentList {
         }
 
         //перведём в дательный падеж
-        if(studentMatched!=null){
-            val fullname= studentMatched!!.fio
-
+        if(studentMatched!=null) {
+            val fullname = studentMatched!!.fio
+            if (offlinemode){
             val encodedName = URLEncoder.encode(fullname, "UTF-8")
+
             val url = URL("https://ws3.morpher.ru/russian/declension?s=$encodedName&flags=name")
             with(url.openConnection() as HttpURLConnection) {
                 requestMethod = "GET"
@@ -404,16 +405,16 @@ class StudentList {
                     val dBuilder = dbFactory.newDocumentBuilder()
                     val xmlDocWithStudent = dBuilder.parse(inputStream).documentElement
 
-                    studentMatched!!.fioDat= URLDecoder.decode(xmlDocWithStudent.getElementsByTagName("Д").item(0).textContent, "UTF-8")
+                    studentMatched!!.fioDat = URLDecoder.decode(xmlDocWithStudent.getElementsByTagName("Д").item(0).textContent, "UTF-8")
                     println(studentMatched!!.fioDat)
                 } else {
 
                     println("Ошибка: $responseCode")
 
 
-
                 }
             }
+        }
         }
 
 
@@ -422,7 +423,7 @@ class StudentList {
         return studentMatched
 
     }
-        fun findMatches() {
+        fun findMatches(caseCheck: Boolean) {
             students.forEach { student ->
                 val fioDat = arrayOf(student.fioDat.split(" "))
 
@@ -472,7 +473,7 @@ class StudentList {
 
 
                 //если студент все равно указал фио в именительном падеже
-                var matchedStudent =findStudentFioIsNominative(student,studentsGroup,studentsDB)
+                var matchedStudent =findStudentFioIsNominative(student,studentsGroup,studentsDB,caseCheck)
                 student.status="QUESTIONABLE"
                 student.msg="Было указано имя в именительном падеже и найдено совпдаение \n" +
                         "Проверь правильность автоматического перевода в дательный падеж"
@@ -507,7 +508,7 @@ class StudentList {
 
                 workbookStudentGroup.close()
             }
-         
+
         }
 
     }

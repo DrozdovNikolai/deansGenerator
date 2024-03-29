@@ -30,7 +30,7 @@
                      <Button contentDisplay="RIGHT" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#findMatches" prefHeight="25.0" prefWidth="123.0" text="Поиск студентов" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
                      <Button mnemonicParsing="false" onAction="#reload" text="Загрузить из excel" wrapText="true" />
                      <Button mnemonicParsing="false" onAction="#clear" prefHeight="25.0" prefWidth="115.0" text="Очистить" GridPane.rowIndex="1" />
-                     <Button mnemonicParsing="false" onAction="#generate2" text="Генерация справок" GridPane.rowIndex="2" />
+                     <Button fx:id="generateBtn" disable="true" mnemonicParsing="false" onAction="#generate2" text="Генерация справок" GridPane.rowIndex="2" />
                      <DatePicker fx:id="datePicker" prefHeight="25.0" prefWidth="158.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
                      <Label text="Дата" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                         <padding>
@@ -48,6 +48,7 @@
                            <Insets right="165.0" />
                         </GridPane.margin>
                      </Label>
+                     <CheckBox fx:id="casecheckbox" mnemonicParsing="false" text="Онлайн перевод в падеж" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
                   </children>
                </GridPane>
             </children>
