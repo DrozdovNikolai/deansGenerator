@@ -338,6 +338,7 @@ class MainController {
             println("Directory not created (it may already exist).")
         }
         StudentListInstance.studentList.students.forEach { student ->
+            print(student)
             var reader: BufferedReader = BufferedReader(FileReader("numberOfCertificate.txt"))
             numberCert = reader.readLine()
             reader.close()
@@ -673,7 +674,7 @@ class MainController {
                     progressBar.progress = (counter.toDouble() / StudentListInstance.studentList.students.size)
 
 
-
+//test
                 }
             }
 
